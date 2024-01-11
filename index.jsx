@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 import Root from './src/pages/Root';
 import Home from './src/pages/Home';
 import Projects from './src/pages/Projects';
 import ProjectView from './src/pages/ProjectView';
-import './index.css';
 
 const router = createBrowserRouter([
     {

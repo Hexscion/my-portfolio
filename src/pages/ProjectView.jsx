@@ -1,25 +1,79 @@
-export default function Project() {
+import Spinner from 'react-bootstrap/Spinner';
+import parse from 'html-react-parser';
+import { Link, useParams } from 'react-router-dom';
+import { doc, getDoc } from 'firebase/firestore';
+import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
+import { db } from '/api';
+
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            refetchOnWindowFocus: false,
+            retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+        }
+    }
+});
+
+export default function ProjectView() {
+    return (
+        <QueryClientProvider client={queryClient}>
+            <ProjectViewContent />
+        </QueryClientProvider>
+    )
+}
+
+function ProjectViewContent() {
+    const { id } = useParams();
+    const { isFetching, isError, data, error } = useQuery({
+        queryKey: ['questions'],
+        queryFn: () => {
+            return getDoc(doc(db, 'projects', id))
+                .then((snapshot) => ({...snapshot.data(), id: snapshot.id}))
+        }
+    })
+
+    const projectsEl =
+            <>
+                <section className="intro portfolio-intro">
+                    <h1 className="section__title section__title--intro">
+                        {data?.projectName} <strong>web app</strong>
+                    </h1>
+                    <p className="section__subtitle section__subtitle--intro">{data?.technology}</p>
+                    <img src={data?.projectImg} alt={data?.projectName} className="project__img" />
+
+                </section>
+                
+                
+                <section className="portfolio-item-individual">
+                    <div >
+                        <Link target="_blank" to={data?.githubLink}><i className="fab fa-github"></i> GitHub Repo</Link>
+                        <Link target="_blank" to={data?.liveLink}><i className="fas fa-eye"></i> Live version</Link>
+                    </div>
+                    <p>{parse(data?.description || '')}</p>
+                </section>
+            </>
+
+    if (isFetching) {
+        return (
+            <section className="intro portfolio-intro">
+                <Spinner animation="border" role="status" variant="dark">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+            </section>
+        )
+    }
+
+    if (isError) {
+        return (
+            <section className="intro portfolio-intro">
+                <p>{error.message}</p>
+            </section>
+        )
+    }
+
     return (
         <>
-            <section className="intro portfolio-intro">
-                <h1 className="section__title section__title--intro">
-                    Oldagram<strong>web app</strong>
-                </h1>
-                <p className="section__subtitle section__subtitle--intro">HTML & CSS</p>
-                <img src="img/oldagram.png" alt="" className="intro__img" />
-
-            </section>
-            
-            
-            <section className="portfolio-item-individual">
-                <div >
-                    <a className="" target="_blank" href="#"><i className="fab fa-github"></i> GitHub Repo</a>
-                    <a className="" target="_blank" href="#"><i className="fas fa-eye"></i> Live version   </a>
-                </div>
-                <p>This is the main layout of an Instagram clone. It is built using vanilla CSS, and is utilizing Flexbox, CSS Grid, and CSS Variables. It was built as a part of Scrimba's Frontend Developer Career Path.</p>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe et amet tenetur! Fugit sequi optio corrupti fugiat ducimus consequatur incidunt?</p>
-                <p>Voluptatibus, soluta blanditiis! Incidunt ea unde itaque illo molestiae eligendi sint culpa nobis voluptas sapiente voluptate, magnam ipsum eius earum?</p>
-            </section>
+            {projectsEl}
         </>
     )
 }

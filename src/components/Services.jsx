@@ -4,18 +4,32 @@ export default function MyServices() {
             <h2 className="section__title section__title--services">What I do</h2>
             <div className="services">
                 <div className="service">
-                    <h3>Design</h3>
-                    <p>I strive to create beautiful and intuitive web apps, meaning I design with both aestetics and usability in mind. You will get your designs delivered as Figma files, as websites or both.</p>
+                    <h3>UI/UX Design</h3>
+                    <p>
+                        I have experience in creating wireframes, prototypes, and mockups for applications using Figma and Adobe XD. 
+                        I have a strong understanding of typography, color theory, and layout design, which helps me create visually 
+                        appealing designs that are easy on the eyes.
+                    </p>
                 </div>
-                
                
                 <div className="service">
-                    <h3>Development</h3>
-                    <p>I am a versatile frontend developer with a speciality in React JS and Tailwind CSS. I also have a solid grip of the fundamentals of web development using HTML, CSS, and JavaScript.</p>
+                    <h3>Frontend Development</h3>
+                    <p>
+                        I am skilled in Frontend development using React JS. I am proefficient in developing web applications that are 
+                        user-friendly, responsive, and visually appealing. I have experience in creating reusable components, 
+                        implementing state management, and integrating APIs.
+                    </p>
+                </div>
+
+                <div className="service">
+                    <h3>Backend Development</h3>
+                    <p>
+                        I have some experience in Backend development using PHP & Firebase. I have experience in creating APIs and 
+                        implementing authentication and authorization. I am also skilled in database management 
+                        using PostgreSQL, Hive and Firestore Database.
+                    </p>
                 </div>
             </div>
-            
-            <a href="#work" className="btn">My Projects</a>
         </section>
     )
 }
