@@ -32,7 +32,7 @@ function ProjectsContent() {
 
     const projectsEl = data?.map((item) => {
         return (
-            <Link to={`projects/${item?.id}`} className="portfolio__item">
+            <Link to={`${item?.id}`} className="portfolio__item">
                 <img src={item?.projectImg} alt={item?.projectName} className="portfolio__img" />
             </Link>
         )
