@@ -1,4 +1,5 @@
 import Spinner from 'react-bootstrap/Spinner';
+import { Link } from 'react-router-dom';
 import { collection, getDocs } from 'firebase/firestore';
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
 import { db } from '/api';
@@ -31,9 +32,9 @@ function ProjectsContent() {
 
     const projectsEl = data?.map((item) => {
         return (
-            <a href={`projects/${item?.id}`} className="portfolio__item">
+            <Link to={`projects/${item?.id}`} className="portfolio__item">
                 <img src={item?.projectImg} alt={item?.projectName} className="portfolio__img" />
-            </a>
+            </Link>
         )
     })
 
