@@ -42,6 +42,11 @@ html {
     scroll-behavior: smooth;
 }
 
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 
 body {
     background: var(--color-light);
@@ -62,6 +67,46 @@ img {
 }
 
 strong { font-weight: var(--fw-bold) }
+
+form, .admin-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    margin: 2em 0;
+    padding: 1em;
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    border-radius: 5px;
+    font-family: var(--ff-tertiary);
+    width: min(90%, 800px);
+}
+
+form input, .admin-form input, form textarea, .admin-form textarea {
+    padding: 0.5em;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+form textarea, .admin-form textarea {
+    min-height: 100px;
+}
+
+form button, .admin-form button {
+    padding: 0.5em;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: var(--color-accent);
+    transition: transform 200ms ease-in-out;
+}
+
+form button:hover, .admin-form button:hover {
+    transform: scale(1.05);
+}
 
 /* Buttons */
 
@@ -185,13 +230,13 @@ header {
 }
 
 .nav-toggle {
-    padding: 0;
+    padding: 1em;
     background: transparent;
     border: 0;
     cursor: pointer;
     position: absolute;
-    right: 1.5em;
-    top: 1.5em;
+    right: 0.5em;
+    top: 0.5em;
     z-index: 1000;
     border: none;
 }
@@ -215,11 +260,6 @@ header {
 .nav-open .hamburger::after {
     opacity: 0;
 }
-
-
-
-
-
 
 .hamburger {
     display: block;
@@ -558,7 +598,7 @@ header {
     text-align: center;
     padding: 2.5em 0;
     font-size: var(--fs-h3);
-
+    margin-top: auto;
 }
 
 .footer a { 
@@ -638,6 +678,75 @@ header {
         position: relative;
         z-index: 2;
     }
+}
+
+/* Admin, Add Project and Add Certificate page */
+
+.admin-container, .add-project-container, .add-certificate-container {
+    font-family: var(--ff-tertiary);
+    width: min(90%, 800px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-container a, .add-project-container a, .add-certificate-container a {
+    text-decoration: none;
+    color: var(--color-dark);
+    font-weight: var(--fw-bold);
+    font-size: 1.25rem;
+    margin-bottom: 1em;
+}
+
+.admin-container a:hover, .add-project-container a:hover, .add-certificate-container a:hover {
+    text-decoration: underline;
+}
+
+.admin-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    background-color: var(--color-dark);
+    font-family: var(--ff-tertiary);
+    color: var(--color-light);
+    text-align: center;
+    padding: 2.5em 0;
+    width: min(90%, 900px);
+    margin: 1em auto;
+    border-radius: 5px;
+}
+
+.admin-email {
+    color: var(--color-accent);
+    line-height: 1.5;
+}
+
+.admin-page a {
+    text-decoration: none;
+    color: var(--color-light);
+    font-weight: var(--fw-bold);
+    font-size: 1.25rem;
+}
+
+.admin-page a:hover {
+    text-decoration: underline;
+}
+
+.admin-page button {
+    padding: 0.5em;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: var(--color-accent);
+    transition: transform 200ms ease-in-out;
+}
+
+.admin-page button:hover {
+    transform: scale(1.05);
 }
 
 /* Carousel CSS */

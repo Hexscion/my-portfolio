@@ -7,6 +7,9 @@ import Root from './src/pages/Root';
 import Home from './src/pages/Home';
 import Projects from './src/pages/Projects';
 import ProjectView from './src/pages/ProjectView';
+import Admin from './src/pages/Admin';
+import AddProject from './src/pages/AddProject';
+import AddCertificate from './src/pages/AddCertificate';
 
 const router = createBrowserRouter([
     {
@@ -25,7 +28,20 @@ const router = createBrowserRouter([
             {
                 path: 'projects/:id',
                 element: <ProjectView />
-            }
+            },
+            {
+                path: 'admin',
+                element: <Admin />
+            },
+            {
+                path: 'add-project',
+                element: <AddProject />
+            },
+            {
+                path: 'add-certificate',
+                element: <AddCertificate />
+            },
+
         ]
     }
 ]);
