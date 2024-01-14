@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export default function Header() {
     const [navOpen, setNavOpen] = useState(false);
@@ -13,13 +13,13 @@ export default function Header() {
                 <span className="hamburger"></span>
             </button>
             <nav className="large-screen-nav">
-                    <Link to="/" className="nav__large-screen-link">HOME</Link>
-                    <Link to="projects" className="nav__large-screen-link">PROJECTS</Link>
+                    <NavLink to="/" className="nav__large-screen-link">HOME</NavLink>
+                    <NavLink to="projects" className="nav__large-screen-link">PROJECTS</NavLink>
             </nav>
             <nav className="nav" onClick={() => setNavOpen((oldState) => !oldState)}>
                 <ul className="nav__list">
-                    <li className="nav__item"><Link to="/" className="nav__link">HOME</Link></li>
-                    <li className="nav__item"><Link to="projects" className="nav__link">PROJECTS</Link></li>
+                    <li className="nav__item"><NavLink to="/" className="nav__link">HOME</NavLink></li>
+                    <li className="nav__item"><NavLink to="projects" className="nav__link">PROJECTS</NavLink></li>
                 </ul>
             </nav>
         </header>

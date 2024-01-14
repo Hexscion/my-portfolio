@@ -66,6 +66,13 @@ img {
     max-width: 100%;
 }
 
+a.active {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
 strong { font-weight: var(--fw-bold) }
 
 form, .admin-form {
@@ -125,9 +132,10 @@ form button:hover, .admin-form button:hover {
     font-weight: var(--fw-bold);
     transition: transform 200ms ease-in-out;
     margin: 5em auto 0;
+    box-shadow: var(--bs);
 }
 
-.btn:hover {
+.link-btn:hover {
     transform: scale(1.1);
 }
 
@@ -223,6 +231,7 @@ header {
     font-weight: var(--fw-bold);
     font-size: var(--fs-h2);
     text-decoration: none;
+    padding: .5em;
 }
 
 .nav__link:hover {
@@ -554,7 +563,8 @@ header {
 .my-work {
     background-color: var(--color-dark);
     color: var(--color-light);
-    text-align: center;    
+    text-align: center;
+    min-height: 700px;
 }
 
 .portfolio {
@@ -566,6 +576,7 @@ header {
 }
 
 .portfolio__item {
+    width: fit-content;
     background: var(--color-black);
     overflow: hidden;
 }
@@ -585,7 +596,7 @@ header {
 
 .portfolio__img:hover,
 .portfolio__item:focus .portfolio__img {
-    transform: scale(1.2);
+    transform: scale(1.1);
     opacity: .5;
 }
 
@@ -767,4 +778,14 @@ header {
 .carousel-indicators {
     position: absolute;
     bottom: -10%;
+}
+
+@media (max-width: 600px) {
+    .certificates {
+        padding: 2em 0;
+    }
+
+    .carousel-indicators {
+        display: none;
+    }
 }

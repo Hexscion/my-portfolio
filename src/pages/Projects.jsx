@@ -67,11 +67,6 @@ function ProjectsContent() {
             
             <div className="portfolio">
                 {projectsEl}
-                {projectsEl}
-                {projectsEl}
-                {projectsEl}
-                {projectsEl}
-                {projectsEl}
             </div>
         </section>
     )
