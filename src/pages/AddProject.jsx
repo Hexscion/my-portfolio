@@ -29,13 +29,13 @@ export default function AddProject() {
     if (error) {
         return (
             <div>
-                <p>Error: {error.message}</p>
+                <p className='status-message'>Error: {error.message}</p>
             </div>
         );
     }
 
     if (loading) {
-        return <p>Loading...</p>;
+        return <p className='status-message'>Loading...</p>;
     }
 
     if (user) {

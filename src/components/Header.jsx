@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 export default function Header() {
     const [navOpen, setNavOpen] = useState(false);
 
     return (
         <header className={navOpen ? "nav-open" : ""}>
-            <div className="logo">
-                <h3>&lt;hexscion&gt;</h3>
+            <div>
+                <Link to="/" className="logo__link">&lt;hexscion&gt;</Link>
             </div>
             <button className="nav-toggle" aria-label="toggle navigation" onClick={() => setNavOpen((oldState) => !oldState)}>
                 <span className="hamburger"></span>

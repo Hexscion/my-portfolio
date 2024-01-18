@@ -10,12 +10,13 @@ import ProjectView from './src/pages/ProjectView';
 import Admin from './src/pages/Admin';
 import AddProject from './src/pages/AddProject';
 import AddCertificate from './src/pages/AddCertificate';
+import Error from './src/pages/Error';
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Root />,
-        errorElement: <div>Error</div>,
+        errorElement: <div className='status-message'>Error: Please try again</div>,
         children: [
             {
                 index: true,
@@ -41,7 +42,10 @@ const router = createBrowserRouter([
                 path: 'add-certificate',
                 element: <AddCertificate />
             },
-
+            {
+                path: '*',
+                element: <Error />
+            }
         ]
     }
 ]);

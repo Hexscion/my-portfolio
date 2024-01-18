@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
 import { db } from '/api';
+import Error from './Error';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -32,7 +33,8 @@ function ProjectViewContent() {
         }
     })
 
-    const projectsEl =
+    const projectsEl = data?.projectName 
+            ?
             <>
                 <section className="intro portfolio-intro">
                     <h1 className="section__title section__title--intro">
@@ -52,6 +54,8 @@ function ProjectViewContent() {
                     <p>{parse(data?.description || '')}</p>
                 </section>
             </>
+            :
+            <Error />
 
     if (isFetching) {
         return (
