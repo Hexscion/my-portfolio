@@ -44,10 +44,10 @@ export default function AddProject() {
                 <h2>Add Project</h2>
                 <form onSubmit={addProject}>
                     <input onChange={handleFormChange} value={formData.name} type="text" name="projectName" placeholder="Project Name" required />
-                    <input onChange={handleFormChange} value={formData.name} type="text" name="projectImg" placeholder="Project Image" required />
-                    <input onChange={handleFormChange} value={formData.name} type="text" name="technology" placeholder="Technologies Used" required />
-                    <input onChange={handleFormChange} value={formData.name} type="text" name="githubLink" placeholder="Github Link" required />
-                    <input onChange={handleFormChange} value={formData.name} type="text" name="liveLink" placeholder="Live Link" required />
+                    <input onChange={handleFormChange} value={formData.name} type="text" name="projectImg" placeholder="Project Image Link" required />
+                    <input onChange={handleFormChange} value={formData.name} type="text" name="technology" placeholder="Technology Used" required />
+                    <input onChange={handleFormChange} value={formData.name} type="text" name="githubLink" placeholder="Github Link" />
+                    <input onChange={handleFormChange} value={formData.name} type="text" name="liveLink" placeholder="Live Link" />
                     <textarea onChange={handleFormChange} value={formData.name} type="text" name="description" placeholder="Description" required />
                     <button type="submit">Add Project</button>
                 </form>

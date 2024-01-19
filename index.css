@@ -175,11 +175,14 @@ h3 { font-size: var(--fs-h3) }
 
 .section__subtitle--intro,
 .section__subtitle--about {
-    background: var(--color-accent);
+    background-image: url(/public/bg_tag.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     padding: .25em 1em;
     font-family: var(--ff-secondary);
     margin-bottom: 1em;
     color: var(--color-light);
+    width: 100%;
 }
 
 .section__subtitle--work {
@@ -405,22 +408,10 @@ header {
         grid-area: subtitle;
         grid-row: 2;
         text-align: right;
-    }
-
-    .section__subtitle--intro::after {
-        content: '';
-        position: absolute;
-        left: 100%;
-        top: 0;
-        width: 0;
-        height: 0;
-        border-top: 1.065em solid transparent;
-        border-bottom: 1.065em solid transparent;
-        border-left: 2em solid var(--color-accent);
-        clear: both;
+        padding-right: 4em;
+        width: 115%;
     }
 }
-
 
 
 /*  My services section  */
@@ -542,22 +533,9 @@ header {
         grid-row: 2;
         position: relative;
         left: -1em;
-        width: calc(100% + 2em);
+        width: fit-content;
         padding-left: 1em;
-        padding-right: calc(200px + 4em);
-    }
-
-    .section__subtitle--about::after {
-        content: '';
-        position: absolute;
-        left: 100%;
-        top: 0;
-        width: 0;
-        height: 0;
-        border-top: 1.084em solid transparent;
-        border-bottom: 1.084em solid transparent;
-        border-left: 2em solid var(--color-accent);
-        clear: both;
+        padding-right: 4em;
     }
     
     .about-me__img {
@@ -566,6 +544,7 @@ header {
         z-index: 2;
     }
 }
+
 
 /* My Work */
 
@@ -695,10 +674,21 @@ header {
     .project__img {
         grid-area: img;
         min-width: 250px;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
         position: relative;
         z-index: 2;
     }
+
+    .portfolio-intro .section__subtitle--intro {
+        margin: 0;
+        padding-left: 1em;
+        text-align: left;
+        width: 100%;
+    }
 }
+
 
 /* Admin, Add Project and Add Certificate page */
 
@@ -777,6 +767,7 @@ header {
 .admin-page button:hover {
     transform: scale(1.05);
 }
+
 
 /* Error Page */
 
