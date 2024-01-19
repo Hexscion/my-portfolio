@@ -183,6 +183,7 @@ h3 { font-size: var(--fs-h3) }
     margin-bottom: 1em;
     color: var(--color-light);
     width: 100%;
+    max-width: 480px;
 }
 
 .section__subtitle--work {
@@ -638,7 +639,7 @@ header {
 /* Individual portfolio item styles */
 
 .portfolio-intro {
-    padding: 5em 2em 2em 2em;
+    padding: 5em 2em 2em;
 }
 
 .portfolio-item-individual {
@@ -670,15 +671,18 @@ header {
     text-decoration: none;
 }
 
+.project__img {
+    min-width: 250px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: relative;
+    box-shadow: var(--bs);
+}
+
 @media (min-width: 600px) {
     .project__img {
         grid-area: img;
-        min-width: 250px;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        position: relative;
-        z-index: 2;
     }
 
     .portfolio-intro .section__subtitle--intro {
