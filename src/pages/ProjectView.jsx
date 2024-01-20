@@ -38,7 +38,7 @@ function ProjectViewContent() {
             <>
                 <section className="intro portfolio-intro">
                     <h1 className="section__title section__title--intro">
-                        {data?.projectName} <strong>web app</strong>
+                        {data?.projectName} <strong>{data?.projectType}</strong>
                     </h1>
                     <p className="section__subtitle section__subtitle--intro">{data?.technology}</p>
                     <img src={data?.projectImg} alt={data?.projectName} className="project__img" />

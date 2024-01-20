@@ -16,6 +16,7 @@ export default function AddProject() {
         const str = formData.projectName.trim().toLowerCase().split(' ').join('-');
         await setDoc(doc(db, 'projects', str), {
             projectName: formData.projectName,
+            projectType: formData.projectType,
             projectImg: formData.projectImg,
             technology: formData.technology,
             githubLink: formData.githubLink,
@@ -43,12 +44,13 @@ export default function AddProject() {
             <div className='add-project-container'>
                 <h2>Add Project</h2>
                 <form onSubmit={addProject}>
-                    <input onChange={handleFormChange} value={formData.name} type="text" name="projectName" placeholder="Project Name" required />
-                    <input onChange={handleFormChange} value={formData.name} type="text" name="projectImg" placeholder="Project Image Link" required />
-                    <input onChange={handleFormChange} value={formData.name} type="text" name="technology" placeholder="Technology Used" required />
-                    <input onChange={handleFormChange} value={formData.name} type="text" name="githubLink" placeholder="Github Link" />
-                    <input onChange={handleFormChange} value={formData.name} type="text" name="liveLink" placeholder="Live Link" />
-                    <textarea onChange={handleFormChange} value={formData.name} type="text" name="description" placeholder="Description" required />
+                    <input onChange={handleFormChange} value={formData.projectName} type="text" name="projectName" placeholder="Project Name" required />
+                    <input onChange={handleFormChange} value={formData.projectType} type="text" name="projectType" placeholder="Project Type" required />
+                    <input onChange={handleFormChange} value={formData.projectImg} type="text" name="projectImg" placeholder="Project Image Link" required />
+                    <input onChange={handleFormChange} value={formData.technology} type="text" name="technology" placeholder="Technology Used" required />
+                    <input onChange={handleFormChange} value={formData.githubLink} type="text" name="githubLink" placeholder="Github Link" />
+                    <input onChange={handleFormChange} value={formData.liveLink} type="text" name="liveLink" placeholder="Live Link" />
+                    <textarea onChange={handleFormChange} value={formData.description} type="text" name="description" placeholder="Description" required />
                     <button type="submit">Add Project</button>
                 </form>
                 <Link to="/add-certificate">Add Certificate</Link>
