@@ -48,8 +48,8 @@ function ProjectViewContent() {
                 
                 <section className="portfolio-item-individual">
                     <div >
-                        {data?.githubLink && <Link target="_blank" to={data?.githubLink}><i className="fab fa-github"></i> GitHub Repo</Link>}
-                        {data?.liveLink && <Link target="_blank" to={data?.liveLink}><i className="fas fa-eye"></i> Live version</Link>}
+                        {data?.githubLink !== '' && <Link target="_blank" to={data?.githubLink}><i className="fab fa-github"></i> GitHub Repo</Link>}
+                        {data?.liveLink !== '' && <Link target="_blank" to={data?.liveLink}><i className="fas fa-eye"></i> Live version</Link>}
                     </div>
                     <p>{parse(data?.description || '')}</p>
                 </section>

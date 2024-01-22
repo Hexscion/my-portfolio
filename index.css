@@ -185,8 +185,6 @@ h3 { font-size: var(--fs-h3) }
     width: 100%;
 }
 
-
-
 .section__subtitle--work {
     color: var(--color-accent);
     font-weight: var(--fw-bold);
@@ -368,6 +366,14 @@ header {
 .section__subtitle--intro {
     display: inline-block;
     color: var(--color-light);
+}
+
+.intro .section__title--intro {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.intro .section__subtitle--intro {
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
 }
 
 @media (max-width: 600px) {
@@ -670,6 +676,12 @@ header {
     color: var(--color-dark);
     padding: 0.25em 1em;
     text-decoration: none;
+    transition: transform 150ms ease-in-out;
+    box-shadow: var(--bs);
+}
+
+.portfolio-item-individual a:hover {
+    transform: scale(1.1);
 }
 
 .project__img {
@@ -932,6 +944,12 @@ a.more-link:hover {
     background-color: var(--color-dark);
 }
 
+@media (max-width: 600px) {
+    .error-container {
+        width: 50%;
+        margin: auto;
+    }
+}
 
 /* Carousel CSS */
 

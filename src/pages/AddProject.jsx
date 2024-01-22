@@ -15,13 +15,13 @@ export default function AddProject() {
         e.preventDefault();
         const str = formData.projectName.trim().toLowerCase().split(' ').join('-');
         await setDoc(doc(db, 'projects', str), {
-            projectName: formData.projectName,
-            projectType: formData.projectType,
-            projectImg: formData.projectImg,
-            technology: formData.technology,
-            githubLink: formData.githubLink,
-            liveLink: formData.liveLink,
-            description: formData.description
+            projectName: formData.projectName.trim(),
+            projectType: formData.projectType.trim(),
+            projectImg: formData.projectImg.trim(),
+            technology: formData.technology.trim(),
+            githubLink: formData.githubLink?.trim() || '',
+            liveLink: formData.liveLink?.trim() || '',
+            description: formData.description.trim()
         });
         setFormData({});
         alert('Project Added');
