@@ -1,7 +1,7 @@
 export default function Footer() {
     return (
         <footer className="footer">
-            <a href="mailto:aldrickrasquinha@gmail.com" className="footer__link">hexscion.dev@gmail.com</a>
+            <a href="mailto:aldrickrasquinha@gmail.com" className="footer__link">aldrickrasquinha@gmail.com</a>
             <ul className="social-list">
                 <li className="social-list__item">
                     <a className="social-list__link" href="https://www.linkedin.com/in/aldrickrasquinha/">

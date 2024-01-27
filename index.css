@@ -645,8 +645,21 @@ header {
 
 /* Individual portfolio item styles */
 
+.back-link {
+    display: inline-block;
+    color: var(--color-dark);
+    text-decoration: none;
+    font-size: 1.125rem;
+    padding: 1em;
+    transition: color 150ms ease-in-out;;
+}
+
+.back-link:hover {
+    color: var(--color-accent);
+}
+
 .portfolio-intro {
-    padding: 5em 2em 2em;
+    padding: 2em;
 }
 
 .portfolio-item-individual {

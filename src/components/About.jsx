@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import img from "/public/aldrick_anime.png";
 
 export default function AboutMe() {
     return (
@@ -16,7 +17,7 @@ export default function AboutMe() {
                     <p>I’m excited to share my work with you, and hope you enjoy browsing my portfolio.</p>
                 </div>
                 
-                <img src="https://images.unsplash.com/photo-1608848461950-0fe51dfc41cb?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Aldrick's selfie" className="about-me__img" />
+                <img src={img} alt="Aldrick's Animefied Image" className="about-me__img" />
             </div>
 
             <Link to="projects" className="link-btn">My Projects</Link>
