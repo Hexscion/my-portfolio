@@ -5,12 +5,21 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { db, auth } from '/api';
 
 export default function AddProject() {
-    const [formData, setFormData] = useState({});
+    const [formData, setFormData] = useState({
+        projectName: '',
+        projectType: '',
+        projectImg: '',
+        technology: '',
+        githubLink: '',
+        liveLink: '',
+        description: ''
+    });
     const [user, loading, error] = useAuthState(auth);
 
     const handleFormChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
+    
     const addProject = async (e) => {
         e.preventDefault();
         const str = formData.projectName.trim().toLowerCase().split(' ').join('-');
@@ -19,11 +28,19 @@ export default function AddProject() {
             projectType: formData.projectType.trim(),
             projectImg: formData.projectImg.trim(),
             technology: formData.technology.trim(),
-            githubLink: formData.githubLink?.trim() || '',
-            liveLink: formData.liveLink?.trim() || '',
+            githubLink: formData.githubLink?.trim() === '' ? null : formData.githubLink.trim(),
+            liveLink: formData.liveLink?.trim() === '' ? null : formData.liveLink.trim(),
             description: formData.description.trim()
         });
-        setFormData({});
+        setFormData({
+            projectName: '',
+            projectType: '',
+            projectImg: '',
+            technology: '',
+            githubLink: '',
+            liveLink: '',
+            description: ''
+        });
         alert('Project Added');
     }
 

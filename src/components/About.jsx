@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import img from "/public/aldrick_anime.png";
+import img from "/src/assets/aldrick_anime.png";
 
 export default function AboutMe() {
     return (

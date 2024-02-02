@@ -5,12 +5,16 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { db, auth } from '/api';
 
 export default function AddCertificate() {
-    const [formData, setFormData] = useState({});
+    const [formData, setFormData] = useState({
+        imgName: '',
+        imgUrl: ''
+    });
     const [user, loading, error] = useAuthState(auth);
 
     const handleFormChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
+    
     const addCertificate = async (e) => {
         e.preventDefault();
         const str = formData.imgName.trim().toLowerCase().split(' ').join('-');
@@ -18,7 +22,10 @@ export default function AddCertificate() {
             imgName: formData.imgName,
             imgUrl: formData.imgUrl
         })
-        setFormData({});
+        setFormData({
+            imgName: '',
+            imgUrl: ''
+        });
         alert('Certificate Added');
     }
 
