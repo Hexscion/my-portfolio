@@ -949,8 +949,8 @@ a.more-link:hover {
 
 .parallax-container {
     position: relative;
-    height: 100dvh;
-    max-width: 100dvw;
+    height: 100vh;
+    max-width: 100vw;
     overflow: hidden;
     padding: 8em 2em;
 }
