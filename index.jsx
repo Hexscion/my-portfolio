@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import Root from './src/pages/Root';
 import Home from './src/pages/Home';
+import Certificates from './src/pages/Certificates';
 import Projects from './src/pages/Projects';
 import ProjectView from './src/pages/ProjectView';
 import Admin from './src/pages/Admin';
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <Home />
+            },
+            {
+                path: 'certificates',
+                element: <Certificates />
             },
             {
                 path: 'projects',

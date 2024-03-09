@@ -42,7 +42,6 @@ function ProjectsContent() {
         return (
             <section className="my-work" id="projects">
                 <h2 className="section__title section__title--work">My projects</h2>
-                <p className="section__subtitle section__subtitle--work">A selection of my range of work</p>
                 <Spinner animation="border" role="status" variant="light">
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
@@ -54,7 +53,6 @@ function ProjectsContent() {
         return (
             <section className="my-work" id="projects">
                 <h2 className="section__title section__title--work">My projects</h2>
-                <p className="section__subtitle section__subtitle--work">A selection of my range of work</p>
                 <p>{error.message}</p>
             </section>
         )
@@ -63,7 +61,6 @@ function ProjectsContent() {
     return (
         <section className="my-work" id="projects">
             <h2 className="section__title section__title--work">My projects</h2>
-            <p className="section__subtitle section__subtitle--work">A selection of my range of work</p>
             
             <div className="portfolio">
                 {projectsEl}

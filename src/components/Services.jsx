@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export default function MyServices() {
     return (
         <section className="my-services">
@@ -24,12 +26,13 @@ export default function MyServices() {
                 <div className="service">
                     <h3>Backend Development</h3>
                     <p>
-                        I have some experience in Backend development using PHP & Firebase. I have experience in creating APIs and 
+                        I have experience in Backend development using NextJS & Firebase. I have experience in creating APIs and 
                         implementing authentication and authorization. I am also skilled in database management 
-                        using PostgreSQL, Hive and Firestore Database.
+                        using PostgreSQL and Firestore Database.
                     </p>
                 </div>
             </div>
+            <Link to="projects" className="link-btn">My Projects</Link>
         </section>
     )
 }

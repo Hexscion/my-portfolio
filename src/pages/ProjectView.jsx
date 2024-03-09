@@ -37,11 +37,11 @@ function ProjectViewContent() {
             ?
             <>
                 <Link to="/projects" className="back-link"><i className="fas fa-arrow-left"></i> Back to projects</Link>
-                <section className="intro portfolio-intro">
-                    <h1 className="section__title section__title--intro">
+                <section className="portfolio-intro">
+                    <h1 className="section__title section__title--portfolio">
                         {data?.projectName} <strong>{data?.projectType}</strong>
                     </h1>
-                    <p className="section__subtitle section__subtitle--intro">{data?.technology}</p>
+                    <p className="section__subtitle section__subtitle--portfolio">{data?.technology}</p>
                     <img src={data?.projectImg} alt={data?.projectName} className="project__img" />
 
                 </section>
