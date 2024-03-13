@@ -23,7 +23,7 @@ export default function Certificates() {
 
 function CertificatesContent() {
     const { isFetching, isError, data, error } = useQuery({
-        queryKey: ['questions'],
+        queryKey: ['certificates'],
         queryFn: () => {
             return getDocs(collection(db, 'certificates'))
                 .then((snapshot) => snapshot.docs.map(doc => ({...doc.data(), id: doc.id})))

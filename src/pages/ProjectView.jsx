@@ -29,7 +29,7 @@ export default function ProjectView() {
 function ProjectViewContent() {
     const { id } = useParams();
     const { isFetching, isError, data, error } = useQuery({
-        queryKey: ['questions'],
+        queryKey: ['projects'],
         queryFn: () => {
             return getDoc(doc(db, 'projects', id))
                 .then((snapshot) => ({...snapshot.data(), id: snapshot.id}))
@@ -63,7 +63,7 @@ function ProjectViewContent() {
 
     if (isFetching) {
         return (
-            <section className="intro portfolio-intro">
+            <section className="portfolio-intro">
                 <Spinner animation="border" role="status" variant="dark">
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
@@ -73,7 +73,7 @@ function ProjectViewContent() {
 
     if (isError) {
         return (
-            <section className="intro portfolio-intro">
+            <section className="portfolio-intro">
                 <p>{error.message}</p>
             </section>
         )

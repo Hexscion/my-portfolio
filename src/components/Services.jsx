@@ -33,13 +33,12 @@ export default function MyServices() {
                     <div className="service-tech">
                         <div><IoLogoFigma size='64px' /><p>Figma</p></div>
                         <div><SiAdobexd size='64px' /><p>AdobeXD</p></div>
-                        <div><IoLogoJavascript size='64px' /><p>JavaScript</p></div>
                         <div><SiKrita size='64px' /><p>Krita</p></div>
                         <div><GiArtificialIntelligence size='64px' /><p>Generative AI</p></div>
                     </div>
                 </div>
             </div>
-            <Link to="projects" className="link-btn">My Projects</Link>
+            <Link to="/projects" className="link-btn">View Projects</Link>
         </section>
     )
 }

@@ -23,7 +23,7 @@ export default function Projects() {
 
 function ProjectsContent() {
     const { isFetching, isError, data, error } = useQuery({
-        queryKey: ['questions'],
+        queryKey: ['projects'],
         queryFn: () => {
             return getDocs(collection(db, 'projects'))
                 .then((snapshot) => snapshot.docs.map(doc => ({...doc.data(), id: doc.id})))
@@ -41,8 +41,8 @@ function ProjectsContent() {
     if (isFetching) {
         return (
             <section className="my-work" id="projects">
-                <h2 className="section__title section__title--work">My projects</h2>
-                <Spinner animation="border" role="status" variant="light">
+                <h2 className="section__title section__title--work">Projects</h2>
+                <Spinner animation="border" role="status" variant="dark">
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
             </section>
@@ -52,7 +52,7 @@ function ProjectsContent() {
     if (isError) {
         return (
             <section className="my-work" id="projects">
-                <h2 className="section__title section__title--work">My projects</h2>
+                <h2 className="section__title section__title--work">Projects</h2>
                 <p>{error.message}</p>
             </section>
         )
@@ -60,11 +60,12 @@ function ProjectsContent() {
 
     return (
         <section className="my-work" id="projects">
-            <h2 className="section__title section__title--work">My projects</h2>
+            <h2 className="section__title section__title--work">Projects</h2>
             
             <div className="portfolio">
                 {projectsEl}
             </div>
+            <Link to="/certificates" className="link-btn">View Certificates</Link>
         </section>
     )
 }

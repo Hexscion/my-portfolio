@@ -1,5 +1,6 @@
-import { Outlet } from "react-router-dom";
+import ScrollToTop from "../components/ScrollToTop";
 import Header from "../components/Header";
+import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
 import { createContext, useState } from 'react';
 
@@ -13,6 +14,7 @@ export default function Root() {
     
     return (
         <RootContext.Provider value={{headerHeight, setHeaderHeight}}>
+            <ScrollToTop />
             <Header />
             <Outlet />
             <Footer />
