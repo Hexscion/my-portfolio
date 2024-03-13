@@ -22,9 +22,7 @@ export default function Hero() {
     const [containerStyle, containerApi] = useSpring(() => {
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
-        const sectionHeight = windowWidth >= 725 
-        ? (windowWidth * (windowHeight / windowWidth)) - headerHeight 
-        : windowWidth * 1.6;
+        const sectionHeight = (windowWidth * (windowHeight / windowWidth)) - headerHeight
 
         return {
             maxHeight: `${sectionHeight}px`,
@@ -35,9 +33,8 @@ export default function Hero() {
         headerHeight != 0 && containerApi.start(() => {
             const windowWidth = window.innerWidth;
             const windowHeight = window.innerHeight;
-            const sectionHeight = windowWidth >= 725 
-            ? (windowWidth * (windowHeight / windowWidth)) - headerHeight 
-            : windowWidth * 1.6;
+            const sectionHeight = (windowWidth * (windowHeight / windowWidth)) - headerHeight
+            
             return {
                 maxHeight: `${sectionHeight}px`,
             }
