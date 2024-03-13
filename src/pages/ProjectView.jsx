@@ -5,6 +5,8 @@ import { doc, getDoc } from 'firebase/firestore';
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
 import { db } from '/api';
 import { IoMdArrowBack } from "react-icons/io";
+import { FaGithub } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 import Error from './Error';
 
 const queryClient = new QueryClient({
@@ -50,8 +52,8 @@ function ProjectViewContent() {
                 
                 <section className="portfolio-item-individual">
                     <div >
-                        {data?.githubLink !== '' && <Link target="_blank" to={data?.githubLink}><i className="fab fa-github"></i> GitHub Repo</Link>}
-                        {data?.liveLink !== '' && <Link target="_blank" to={data?.liveLink}><i className="fas fa-eye"></i> Live version</Link>}
+                        {data?.githubLink !== '' && <Link target="_blank" className="external-link" to={data?.githubLink}><FaGithub /> GitHub Repo</Link>}
+                        {data?.liveLink !== '' && <Link target="_blank" className="external-link" to={data?.liveLink}><FaEye /> Live version</Link>}
                     </div>
                     <p>{parse(data?.description || '')}</p>
                 </section>
