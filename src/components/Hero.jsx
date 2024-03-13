@@ -13,22 +13,59 @@ import react_logo from '/src/assets/react.svg';
 import { useSpring, useSprings, animated } from '@react-spring/web';
 import { useMove } from '@use-gesture/react';
 import { useSpringRef, useChain } from '@react-spring/web';
+import { RootContext } from '../pages/Root';
+import { useContext, useEffect } from 'react';
 
 export default function Hero() {
+    const {headerHeight, setHeaderHeight} = useContext(RootContext);
+
+    const [containerStyle, containerApi] = useSpring(() => {
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        const sectionHeight = windowWidth >= 725 
+        ? (windowWidth * (windowHeight / windowWidth)) - headerHeight 
+        : windowWidth * 1.6;
+
+        return {
+            maxHeight: `${sectionHeight}px`,
+        }
+    }, []);
+
+    useEffect(() => {
+        headerHeight != 0 && containerApi.start(() => {
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const sectionHeight = windowWidth >= 725 
+            ? (windowWidth * (windowHeight / windowWidth)) - headerHeight 
+            : windowWidth * 1.6;
+            return {
+                maxHeight: `${sectionHeight}px`,
+            }
+        })
+    }, [headerHeight]);
+
     const images = [
         { src: background, className: 'background', yInit: -100, speedx: 0.3, speedy: 0.5, speedz: 0, },
-        { src: hill_back, className: 'hill-back', yInit: 100, speedx: 0.1, speedy: 0.2, speedz: 0.04, },
-        { src: hill_front, className: 'hill-front', yInit: 100, speedx: 0.07, speedy: 0.08, speedz: 0.07, },
-        { src: land_back, className: 'land-back', yInit: 100, speedx: 0.06, speedy: 0.06, speedz: 0.10, },
+        { src: hill_back, className: 'hill-back', yInit: 100, speedx: 0.1, speedy: 0.1, speedz: 0.04, },
+        { src: hill_front, className: 'hill-front', yInit: 100, speedx: 0.08, speedy: 0.08, speedz: 0.06, },
+        { src: land_back, className: 'land-back', yInit: 100, speedx: 0.06, speedy: 0.06, speedz: 0.07, },
         { src: tree_1, className: 'tree-1', yInit: 100, speedx: 0.005, speedy: 0.035, speedz: 0.05, },
         { src: tree_2, className: 'tree-2', yInit: 100, speedx: 0.01, speedy: 0.04, speedz: 0.06, },
         { src: tree_3, className: 'tree-3', yInit: 100, speedx: 0.015, speedy: 0.045, speedz: 0.07, },
         { src: land_front, className: 'land-front', yInit: 100, speedx: 0.02, speedy: 0.03, speedz: 0.03, },
-        { src: cloud_1, className: 'cloud-1', yInit: 100, speedx: 0.15, speedy: 0.1, speedz: 0.1, },
+        { src: cloud_1, className: 'cloud-1', yInit: 100, speedx: 0.15, speedy: 0.11, speedz: 0.1, },
         { src: cloud_2, className: 'cloud-2', yInit: 100, speedx: 0.17, speedy: 0.13, speedz: 0.1, },
         { src: birds, className: 'birds', yInit: 100, speedx: 0.2, speedy: 0.2, speedz: 0.5, },
     ]
     const [styles, api] = useSprings(images.length, (index) => {
+        const windowWidth = window.innerWidth;
+
+        if (windowWidth <= 725) {
+            return { 
+                transform : `perspective(2000px) translateX(calc(-50% + 0px)) translateY(calc(-50% + 0px)) translateZ(calc(0px))`,
+            }
+        }
+
         return { 
             from: {
                 transform : `perspective(2000px) translateX(calc(-50% + 0px)) translateY(calc(${images[index].yInit}% + 0px)) translateZ(calc(0px))`,
@@ -63,20 +100,42 @@ export default function Hero() {
     });
 
     const reactLogoRef = useSpringRef();
-    const reactLogoStyle = useSpring({
-        ref: reactLogoRef,
-        from: { opacity: 0, scale: 0, },
-        to: { opacity: 1, scale: 1, },
-        config: {
-            tension: 280, friction: 60,
-        },
-    });
+    const [reactLogoStyle, reactLogoApi] = useSpring(() => {
+        if (window.innerWidth <= 1300) return;
+        
+        return {
+            ref: reactLogoRef,
+            from: { opacity: 0, scale: 0, rotate: 0, },
+            to: { opacity: 1, scale: 1, rotate: 360, },
+            config: { tension: 280, friction: 120 },
+            onResolve: () => {
+                reactLogoApi.start({
+                    from: { rotate: 0, },
+                    to: { rotate: 360, },
+                    loop: true,
+                    config: { tension: 320, friction: 160 },
+                })
+            }
+        }
+    }, []);
 
     useChain([titleRef, subtitleRef, reactLogoRef], [0, 1, 5], 100);
 
+    let [xPrevValue, yPrevValue] = ['', ''];
     const bind = useMove(({ xy: [x, y] }) => {
-        const xValue = x - window.innerWidth / 2;
-        const yValue = y - window.innerHeight / 2;
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+
+        if (((xPrevValue != '' && yPrevValue != '') && (Math.abs(xPrevValue-x) < (windowWidth / 20) && Math.abs(yPrevValue-y) < (windowHeight / 20))) 
+        || windowWidth <= 725) {
+            return;
+        }
+
+        const xValue = x - windowWidth / 2;
+        const yValue = y - windowHeight / 2;
+
+        xPrevValue = x;
+        yPrevValue = y;
 
         api.start((index) => {
             const element = document.querySelector(`.${images[index].className}`);
@@ -91,10 +150,10 @@ export default function Hero() {
                 },
             }
         })
-    })
+    });
 
     return (
-        <animated.section className="parallax-container" {...bind()}>
+        <animated.section className="parallax-container" {...bind()} style={containerStyle}>
             {
                 styles?.map((style, index) => {
                     return (
@@ -110,5 +169,5 @@ export default function Hero() {
                 <animated.p className="parallax parallax__subtitle--intro" style={subtitleStyle}>Front-End Developer</animated.p>
             </div>
         </animated.section>
-    )
+    );
 }

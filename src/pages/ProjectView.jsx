@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
 import { db } from '/api';
+import { IoMdArrowBack } from "react-icons/io";
 import Error from './Error';
 
 const queryClient = new QueryClient({
@@ -36,7 +37,7 @@ function ProjectViewContent() {
     const projectsEl = data?.projectName 
             ?
             <>
-                <Link to="/projects" className="back-link"><i className="fas fa-arrow-left"></i> Back to projects</Link>
+                <Link to="/projects" className="back-link"><IoMdArrowBack size='24px' />Back to projects</Link>
                 <section className="portfolio-intro">
                     <h1 className="section__title section__title--portfolio">
                         {data?.projectName} <strong>{data?.projectType}</strong>

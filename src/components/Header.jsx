@@ -1,8 +1,15 @@
-import { useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { RootContext } from '../pages/Root';
 
 export default function Header() {
+    const {headerHeight, setHeaderHeight} = useContext(RootContext);
     const [navOpen, setNavOpen] = useState(false);
+
+    useEffect(() => {
+        const height = document.getElementsByTagName("header")[0].offsetHeight;
+        setHeaderHeight(height);
+    }, []);
 
     return (
         <header className={navOpen ? "nav-open" : ""}>

@@ -1,3 +1,7 @@
+import { FaLinkedin } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+
 export default function Footer() {
     return (
         <footer className="footer">
@@ -5,17 +9,17 @@ export default function Footer() {
             <ul className="social-list">
                 <li className="social-list__item">
                     <a className="social-list__link" href="https://www.linkedin.com/in/aldrickrasquinha/">
-                        <i className="fab fa-linkedin"></i>
+                        <FaLinkedin />
                     </a>
                 </li>
                 <li className="social-list__item">
                     <a className="social-list__link" href="https://twitter.com/Hexscion">
-                        <i className="fab fa-twitter"></i>
+                        <FaTwitter />
                     </a>
                 </li>
                 <li className="social-list__item">
                     <a className="social-list__link" href="https://github.com/Hexscion">
-                        <i className="fab fa-github"></i>
+                        <FaGithub />
                     </a>
                 </li>
             </ul>

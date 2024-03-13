@@ -1,4 +1,15 @@
 import { Link } from "react-router-dom"
+import { FaHtml5 } from "react-icons/fa";
+import { FaCss3Alt } from "react-icons/fa";
+import { IoLogoJavascript } from "react-icons/io5";
+import { FaReact } from "react-icons/fa";
+import { TbBrandNextjs } from "react-icons/tb";
+import { IoLogoFirebase } from "react-icons/io5";
+import { BiLogoPostgresql } from "react-icons/bi";
+import { IoLogoFigma } from "react-icons/io5";
+import { SiAdobexd } from "react-icons/si";
+import { SiKrita } from "react-icons/si";
+import { GiArtificialIntelligence } from "react-icons/gi";
 
 export default function MyServices() {
     return (
@@ -6,30 +17,26 @@ export default function MyServices() {
             <h2 className="section__title section__title--services">What I do</h2>
             <div className="services">
                 <div className="service">
-                    <h3>UI/UX Design</h3>
-                    <p>
-                        I have experience in creating wireframes, prototypes, and mockups for applications using Figma and Adobe XD. 
-                        I have a strong understanding of typography, color theory, and layout design, which helps me create visually 
-                        appealing designs that are easy on the eyes.
-                    </p>
+                    <h3>Web Development</h3>
+                    <div className="service-tech">
+                        <div><FaHtml5 size='64px' /><p>HTML</p></div>
+                        <div><FaCss3Alt size='64px' /><p>CSS</p></div>
+                        <div><IoLogoJavascript size='64px' /><p>JavaScript</p></div>
+                        <div><FaReact size='64px' /><p>React</p></div>
+                        <div><IoLogoFirebase size='64px' /><p>Firebase</p></div>
+                        <div><BiLogoPostgresql size='64px' /><p>PostgreSQL</p></div>
+                    </div>
                 </div>
                
                 <div className="service">
-                    <h3>Frontend Development</h3>
-                    <p>
-                        I am skilled in Frontend development using React JS. I am proefficient in developing web applications that are 
-                        user-friendly, responsive, and visually appealing. I have experience in creating reusable components, 
-                        implementing state management, and integrating APIs.
-                    </p>
-                </div>
-
-                <div className="service">
-                    <h3>Backend Development</h3>
-                    <p>
-                        I have experience in Backend development using NextJS & Firebase. I have experience in creating APIs and 
-                        implementing authentication and authorization. I am also skilled in database management 
-                        using PostgreSQL and Firestore Database.
-                    </p>
+                    <h3>UI Design</h3>
+                    <div className="service-tech">
+                        <div><IoLogoFigma size='64px' /><p>Figma</p></div>
+                        <div><SiAdobexd size='64px' /><p>AdobeXD</p></div>
+                        <div><IoLogoJavascript size='64px' /><p>JavaScript</p></div>
+                        <div><SiKrita size='64px' /><p>Krita</p></div>
+                        <div><GiArtificialIntelligence size='64px' /><p>Generative AI</p></div>
+                    </div>
                 </div>
             </div>
             <Link to="projects" className="link-btn">My Projects</Link>
