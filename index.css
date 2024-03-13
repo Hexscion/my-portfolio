@@ -567,10 +567,6 @@ header {
     transition: color 150ms ease-in-out;;
 }
 
-.back-link svg { 
-    padding-bottom: 2px;
-}
-
 .external-link {
     display: flex;
     flex-direction: row;
