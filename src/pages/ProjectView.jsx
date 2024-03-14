@@ -41,7 +41,7 @@ function ProjectViewContent() {
             <>
                 <Link to="/projects" className="back-link"><IoMdArrowBack size='24px' />Back to projects</Link>
                 <section className="portfolio-intro">
-                    <h1 className="section__title section__title--portfolio">
+                    <h1 className="section__title--portfolio">
                         {data?.projectName} <strong>{data?.projectType}</strong>
                     </h1>
                     <p className="section__subtitle section__subtitle--portfolio">{data?.technology}</p>

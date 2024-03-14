@@ -41,7 +41,7 @@ function CertificatesContent() {
     if (isFetching) {
         return (
             <section className="certificates">
-                <h2 className="section__title section__title--certificates">Certificates</h2>
+                <h2 className="section__title">Certificates</h2>
                 <Spinner animation="border" role="status" variant="dark">
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
@@ -52,7 +52,7 @@ function CertificatesContent() {
     if (isError) {
         return (
             <section className="certificates">
-                <h2 className="section__title section__title--certificates">Certificates</h2>
+                <h2 className="section__title">Certificates</h2>
                 <p>{error.message}</p>
             </section>
         )
@@ -60,7 +60,7 @@ function CertificatesContent() {
 
     return (
         <section className="certificates">
-            <h2 className="section__title section__title--certificates">Certificates</h2>
+            <h2 className="section__title">Certificates</h2>
             <Carousel data-bs-theme="dark">
                 {certificateEl}
             </Carousel>

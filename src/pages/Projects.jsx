@@ -41,7 +41,7 @@ function ProjectsContent() {
     if (isFetching) {
         return (
             <section className="my-work" id="projects">
-                <h2 className="section__title section__title--work">Projects</h2>
+                <h2 className="section__title">Projects</h2>
                 <Spinner animation="border" role="status" variant="dark">
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
@@ -52,7 +52,7 @@ function ProjectsContent() {
     if (isError) {
         return (
             <section className="my-work" id="projects">
-                <h2 className="section__title section__title--work">Projects</h2>
+                <h2 className="section__title">Projects</h2>
                 <p>{error.message}</p>
             </section>
         )
@@ -60,7 +60,7 @@ function ProjectsContent() {
 
     return (
         <section className="my-work" id="projects">
-            <h2 className="section__title section__title--work">Projects</h2>
+            <h2 className="section__title">Projects</h2>
             
             <div className="portfolio">
                 {projectsEl}
