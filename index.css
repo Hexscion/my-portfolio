@@ -472,6 +472,7 @@ body:has(div .nav-open) {
     color: var(--color-light);
     text-align: center;
     min-height: 700px;
+    padding: 2em;
 }
 
 .portfolio {
@@ -576,10 +577,9 @@ body:has(div .nav-open) {
 
 .external-link {
     display: flex;
-    flex-direction: row;
-    justify-content: start;
     align-items: center;
     gap: 0.3em;
+    text-align: center;
 }
 
 .back-link:hover {
@@ -660,7 +660,7 @@ body:has(div .nav-open) {
         margin-left: auto; 
         margin-right: auto; 
         width: 70%;
-        max-width: 1250px;
+        max-width: 1200px;
         height: fit-content;
         display: grid;
         grid-template-columns: max-content max-content;

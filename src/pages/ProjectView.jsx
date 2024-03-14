@@ -46,7 +46,6 @@ function ProjectViewContent() {
                     </h1>
                     <p className="section__subtitle section__subtitle--portfolio">{data?.technology}</p>
                     <img src={data?.projectImg} alt={data?.projectName} className="project__img" />
-
                 </section>
                 
                 
@@ -63,7 +62,7 @@ function ProjectViewContent() {
 
     if (isFetching) {
         return (
-            <section className="portfolio-intro">
+            <section className="portfolio-item-individual">
                 <Spinner animation="border" role="status" variant="dark">
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
@@ -73,7 +72,7 @@ function ProjectViewContent() {
 
     if (isError) {
         return (
-            <section className="portfolio-intro">
+            <section className="portfolio-item-individual">
                 <p>{error.message}</p>
             </section>
         )
