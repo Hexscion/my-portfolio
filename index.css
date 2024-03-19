@@ -263,6 +263,7 @@ header {
 
 .nav-toggle::before, .nav-toggle::after {
     z-index: 100;
+    opacity: 0;
     background-color: var(--color-dark);
     content: '';
     position: absolute;
@@ -277,13 +278,13 @@ header {
 
 .nav-toggle::after {
     z-index: 101;
-    opacity: 0;
     background-color: #440091;
     border-radius: 50%;
     transition: all 400ms cubic-bezier(.5, 0, .5, 1);
 }
 
 .nav-open .nav-toggle::before {
+    opacity: 1;
     transform: scale(26);
     box-shadow: var(--bs);
 }
