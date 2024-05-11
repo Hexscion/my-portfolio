@@ -1208,7 +1208,7 @@ a.more-link:hover {
 .tree-1 {
     position: absolute;
     z-index: 5;
-    width: 120px;
+    width: 160px;
     left: calc(50% + 250px);
     top: calc(50% + 80px);
 }
@@ -1216,7 +1216,7 @@ a.more-link:hover {
 .tree-2 {
     position: absolute;
     z-index: 6;
-    width: 130px;
+    width: 150px;
     left: calc(50% + 100px);
     top: calc(50% + 140px);
 }
@@ -1224,7 +1224,7 @@ a.more-link:hover {
 .tree-3 {
     position: absolute;
     z-index: 7;
-    width: 120px;
+    width: 140px;
     left: calc(50% + 390px);
     top: calc(50% + 70px);
 }
@@ -1334,21 +1334,21 @@ a.more-link:hover {
     }
     
     .tree-1 {
-        width: 160px;
+        width: 140px;
         left: calc(50% + 250px);
-        top: calc(50% + 100px);
+        top: calc(50% + 120px);
     }
     
     .tree-2 {
-        width: 150px;
+        width: 130px;
         left: calc(50% + 100px);
-        top: calc(50% + 160px);
+        top: calc(50% + 180px);
     }
     
     .tree-3 {
-        width: 140px;
+        width: 120px;
         left: calc(50% + 390px);
-        top: calc(50% + 90px);
+        top: calc(50% + 110px);
     }
     
     .land-front {

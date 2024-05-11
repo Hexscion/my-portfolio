@@ -101,13 +101,16 @@ export default function Hero() {
 
     useChain([titleRef, subtitleRef, reactLogoRef], [0, 1, 5], 100);
 
+    let lastMoveTime = 0;
     const bind = useMove(({ xy: [x, y] }) => {
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
 
-        if (windowWidth <= 725) {
+        if (windowWidth <= 725 || Date.now() - lastMoveTime < 100) {
             return;
         }
+
+        lastMoveTime = Date.now();
 
         const xValue = x - windowWidth / 2;
         const yValue = y - windowHeight / 2;
@@ -133,13 +136,14 @@ export default function Hero() {
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
         
-        if (windowWidth >= 725) {
+        if (windowWidth >= 725 || Date.now() - lastMoveTime < 100) {
             return;
         }
 
+        lastMoveTime = Date.now();
+
         const xValue = event.gamma * windowWidth / 25;
-        let yValue = event.beta * windowHeight / 100;
-        console.log(yValue);
+        let yValue = event.beta * windowHeight / 75;
 
         api.start((index) => {
             const element = document.querySelector(`.${images[index].className}`);
