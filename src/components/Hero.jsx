@@ -13,33 +13,17 @@ import react_logo from '/src/assets/react.svg';
 import { useSpring, useSprings, animated } from '@react-spring/web';
 import { useMove } from '@use-gesture/react';
 import { useSpringRef, useChain } from '@react-spring/web';
-import { RootContext } from '../pages/Root';
-import { useContext, useEffect } from 'react';
 
 export default function Hero() {
-    const {headerHeight, setHeaderHeight} = useContext(RootContext);
-
     const [containerStyle, containerApi] = useSpring(() => {
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
-        const sectionHeight = (windowWidth * (windowHeight / windowWidth)) - headerHeight
+        const sectionHeight = (windowWidth * (windowHeight / windowWidth))
 
         return {
             maxHeight: `${sectionHeight}px`,
         }
     }, []);
-
-    useEffect(() => {
-        headerHeight != 0 && containerApi.start(() => {
-            const windowWidth = window.innerWidth;
-            const windowHeight = window.innerHeight;
-            const sectionHeight = (windowWidth * (windowHeight / windowWidth)) - headerHeight
-            
-            return {
-                maxHeight: `${sectionHeight}px`,
-            }
-        })
-    }, [headerHeight]);
 
     const images = [
         { src: background, className: 'background', yInit: -100, speedx: 0.3, speedy: 0.5, speedz: 0, },
@@ -107,10 +91,8 @@ export default function Hero() {
             config: { tension: 280, friction: 120 },
             onResolve: () => {
                 reactLogoApi.start({
-                    from: { rotate: 0, },
-                    to: { rotate: 360, },
-                    loop: true,
-                    config: { tension: 320, friction: 160 },
+                    from: { opacity: 1, },
+                    to: { opacity: 1, },
                 })
             }
         }
@@ -118,21 +100,16 @@ export default function Hero() {
 
     useChain([titleRef, subtitleRef, reactLogoRef], [0, 1, 5], 100);
 
-    let [xPrevValue, yPrevValue] = ['', ''];
     const bind = useMove(({ xy: [x, y] }) => {
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
 
-        if (((xPrevValue != '' && yPrevValue != '') && (Math.abs(xPrevValue-x) < (windowWidth / 20) && Math.abs(yPrevValue-y) < (windowHeight / 20))) 
-        || windowWidth <= 725) {
+        if (windowWidth <= 725) {
             return;
         }
 
         const xValue = x - windowWidth / 2;
         const yValue = y - windowHeight / 2;
-
-        xPrevValue = x;
-        yPrevValue = y;
 
         api.start((index) => {
             const element = document.querySelector(`.${images[index].className}`);
@@ -148,6 +125,34 @@ export default function Hero() {
             }
         })
     });
+
+    window.addEventListener("deviceorientation", handleOrientation, true);
+
+    function handleOrientation(event) {
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        
+        if (windowWidth >= 725) {
+            return;
+        }
+
+        const xValue = event.gamma * windowWidth / 25;
+        const yValue = event.beta * windowHeight / 50;
+
+        api.start((index) => {
+            const element = document.querySelector(`.${images[index].className}`);
+            const isLeft = parseFloat(getComputedStyle(element).left) < window.innerWidth / 2 ? -1 : 1;
+            const zValue = (event.gamma - parseFloat(getComputedStyle(element).left)) * isLeft;
+            return {
+                to: {
+                    transform : `perspective(2000px) 
+                    translateX(calc(-50% + ${xValue * images[index].speedx}px)) 
+                    translateY(calc(-50% + ${yValue * images[index].speedy}px)) 
+                    translateZ(calc(${zValue * images[index].speedz}px))`,
+                },
+            }
+        })
+    }
 
     return (
         <animated.section className="parallax-container" {...bind()} style={containerStyle}>

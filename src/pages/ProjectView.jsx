@@ -39,7 +39,7 @@ function ProjectViewContent() {
     const projectsEl = data?.projectName 
             ?
             <>
-                <Link to="/projects" className="back-link"><IoMdArrowBack size='24px' />Back to projects</Link>
+                <Link to="/projects" replace={true} className="back-link"><IoMdArrowBack size='24px' />Back to projects</Link>
                 <section className="portfolio-intro">
                     <h1 className="section__title--portfolio">
                         {data?.projectName} <strong>{data?.projectType}</strong>

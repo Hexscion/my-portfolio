@@ -32,7 +32,7 @@ function ProjectsContent() {
 
     const projectsEl = data?.map((item) => {
         return (
-            <Link to={`${item?.id}`} className="portfolio__item" key={item?.id}>
+            <Link to={`${item?.id}`} className="portfolio__item" key={item?.id} style={{"--item-name": `"${item?.projectName}"`}}>
                 <img src={item?.projectImg} alt={item?.projectName} className="portfolio__img" />
             </Link>
         )
