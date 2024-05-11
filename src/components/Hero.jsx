@@ -18,10 +18,11 @@ export default function Hero() {
     const [containerStyle, containerApi] = useSpring(() => {
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
+        const minHeight = 800;
         const sectionHeight = (windowWidth * (windowHeight / windowWidth))
 
         return {
-            maxHeight: `${sectionHeight}px`,
+            height: `${sectionHeight<minHeight ? minHeight : sectionHeight}px`,
         }
     }, []);
 
@@ -137,7 +138,8 @@ export default function Hero() {
         }
 
         const xValue = event.gamma * windowWidth / 25;
-        const yValue = event.beta * windowHeight / 50;
+        let yValue = event.beta * windowHeight / 100;
+        console.log(yValue);
 
         api.start((index) => {
             const element = document.querySelector(`.${images[index].className}`);

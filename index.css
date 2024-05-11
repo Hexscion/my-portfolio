@@ -51,7 +51,6 @@
 /* General styles */
 html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
 }
 
 #root {
@@ -67,6 +66,7 @@ body {
     font-family: var(--ff-primary);
     font-size: var(--fs-body);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 section {
@@ -299,7 +299,15 @@ header {
     transition: all 400ms cubic-bezier(.5, 0, .5, 1);
 }
 
-body:has(div .nav-open) {
+header:not(.nav-open) {
+    animation: 1s delay-overflow;
+}
+
+@keyframes delay-overflow {
+    100% { overflow: hidden; }
+}
+
+body:has(.nav-open) {
     max-height: 100vh;
     max-width: 100vw;
     overflow: hidden;
@@ -731,6 +739,7 @@ select:focus, select:active, select:hover {
 .carousel-indicators {
     position: absolute;
     bottom: -10%;
+    margin: auto;
 }
 
 @media (max-width: 600px) {
@@ -750,7 +759,7 @@ select:focus, select:active, select:hover {
     .carousel-indicators [data-bs-target] {
         width: 20px;
         height: 20px;
-        margin: 0 7.5px;
+        margin: 0 5px;
         border-radius: 50%;
     }
 
@@ -1199,7 +1208,7 @@ a.more-link:hover {
 .tree-1 {
     position: absolute;
     z-index: 5;
-    width: 160px;
+    width: 120px;
     left: calc(50% + 250px);
     top: calc(50% + 80px);
 }
@@ -1207,7 +1216,7 @@ a.more-link:hover {
 .tree-2 {
     position: absolute;
     z-index: 6;
-    width: 150px;
+    width: 130px;
     left: calc(50% + 100px);
     top: calc(50% + 140px);
 }
@@ -1215,7 +1224,7 @@ a.more-link:hover {
 .tree-3 {
     position: absolute;
     z-index: 7;
-    width: 140px;
+    width: 120px;
     left: calc(50% + 390px);
     top: calc(50% + 70px);
 }
@@ -1254,6 +1263,7 @@ a.more-link:hover {
 
 .intro-container {
     position: relative;
+    margin-top: 5em;
     margin-left: auto; 
     margin-right: auto; 
     width: 60%;
@@ -1302,6 +1312,68 @@ a.more-link:hover {
     font-size: var(--fs-h3);
     color: var(--color-light);
     filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+@media (max-width: 725px) {
+    .hill-back {
+        width: 1500px;
+        left: calc(50% + 200px);
+        top: calc(50% + 50px);
+    }
+    
+    .hill-front {
+        width: 1300px;
+        left: calc(50% + 150px);
+        top: calc(50% + 200px);
+    }
+    
+    .land-back {
+        width: 1300px;
+        left: calc(50% - 15px);
+        top: calc(50% + 350px);
+    }
+    
+    .tree-1 {
+        width: 160px;
+        left: calc(50% + 250px);
+        top: calc(50% + 100px);
+    }
+    
+    .tree-2 {
+        width: 150px;
+        left: calc(50% + 100px);
+        top: calc(50% + 160px);
+    }
+    
+    .tree-3 {
+        width: 140px;
+        left: calc(50% + 390px);
+        top: calc(50% + 90px);
+    }
+    
+    .land-front {
+        width: 1300px;
+        left: calc(50% + 15px);
+        top: calc(50% + 350px);
+    }
+    
+    .cloud-1 {
+        width: 800px;
+        left: calc(50% - 900px);
+        top: calc(50% - 400px);
+    }
+    
+    .cloud-2 {
+        width: 800px;
+        left: calc(50% + 800px);
+        top: calc(50% - 350px);
+    }
+    
+    .birds {
+        width: 200px;
+        left: calc(50% - 700px);
+        top: calc(50% - 250px);
+    }
 }
 
 @media (min-width: 2000px) {
