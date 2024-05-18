@@ -65,7 +65,7 @@ export default function Hero() {
     const [titleStyle, titleApi] = useSpring(() => {
         if(window.innerWidth <= 725) return {
             ref: titleRef,
-            from: { x: `calc(-300%)`, },
+            from: { x: `calc(-400%)`, },
             to: { x: `calc(0%)`, },
             config: {
                 tension: 280, friction: 60,
@@ -86,7 +86,7 @@ export default function Hero() {
     const [subtitleStyle, subtitleApi] = useSpring(() => {
         if(window.innerWidth <= 725) return {
             ref: subtitleRef,
-            from: { x: `calc(-300%)`, },
+            from: { x: `calc(-400%)`, },
             to: { x: `calc(0%)`, },
             config: {
                 tension: 280, friction: 60,
