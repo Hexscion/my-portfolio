@@ -62,23 +62,45 @@ export default function Hero() {
     }, []);
 
     const titleRef = useSpringRef();
-    const titleStyle = useSpring({
-        ref: titleRef,
-        from: { x: `calc(-200%)`, },
-        to: { x: `calc(0%)`, },
-        config: {
-            tension: 280, friction: 60,
-        },
+    const [titleStyle, titleApi] = useSpring(() => {
+        if(window.innerWidth <= 725) return {
+            ref: titleRef,
+            from: { x: `calc(-100%)`, },
+            to: { x: `calc(0%)`, },
+            config: {
+                tension: 280, friction: 60,
+            }
+        }
+
+        return {
+            ref: titleRef,
+            from: { x: `calc(-200%)`, },
+            to: { x: `calc(0%)`, },
+            config: {
+                tension: 280, friction: 60,
+            }
+        }
     });
 
     const subtitleRef = useSpringRef();
-    const subtitleStyle = useSpring({
-        ref: subtitleRef,
-        from: { x: `calc(-200%)`, },
-        to: { x: `calc(0%)`, },
-        config: {
-            tension: 280, friction: 60,
-        },
+    const [subtitleStyle, subtitleApi] = useSpring(() => {
+        if(window.innerWidth <= 725) return {
+            ref: subtitleRef,
+            from: { x: `calc(-100%)`, },
+            to: { x: `calc(0%)`, },
+            config: {
+                tension: 280, friction: 60,
+            }
+        }
+
+        return {
+            ref: subtitleRef,
+            from: { x: `calc(-200%)`, },
+            to: { x: `calc(0%)`, },
+            config: {
+                tension: 280, friction: 60,
+            }
+        }
     });
 
     const reactLogoRef = useSpringRef();

@@ -46,14 +46,18 @@ export default function AddProject() {
 
     if (error) {
         return (
-            <div>
+            <div className='add-project-container'>
                 <p className='status-message'>Error: {error.message}</p>
             </div>
         );
     }
 
     if (loading) {
-        return <p className='status-message'>Loading...</p>;
+        return (
+            <div className='add-project-container'>
+                <p className='status-message'>Loading...</p>
+            </div>
+        );
     }
 
     if (user) {
