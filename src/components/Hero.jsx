@@ -196,7 +196,7 @@ export default function Hero() {
                 <animated.h1 className="parallax parallax__title--intro" style={titleStyle}>
                     Hello, I am <strong className="parallax">Aldrick Rasquinha</strong>
                 </animated.h1>
-                <animated.p className="parallax parallax__subtitle--intro" style={subtitleStyle}>Front-End Developer</animated.p>
+                <animated.p className="parallax parallax__subtitle--intro" style={subtitleStyle}>Frontend Developer</animated.p>
             </div>
         </animated.section>
     );
