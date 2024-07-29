@@ -433,9 +433,71 @@ body:has(.nav-open) {
 }
 
 
+/*  Assets  */
+.asset {
+    position: absolute;
+    opacity: 0.3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1550px) {
+    .asset {
+        display: none;
+    }
+}
+
+.asset-image {
+    width: 100%;
+    height: 100%;
+}
+
+.left-right-custom-animation {
+    animation: 10s left-right-anim linear infinite;
+}
+
+@keyframes left-right-anim {
+    0% { transform: translateX(-1rem); }
+    50% { transform: translateX(1rem); }
+    100% { transform: translateX(-1rem); }
+}
+
+.up-down-custom-animation {
+    animation: 10s up-down-anim linear infinite;
+}
+
+@keyframes up-down-anim {
+    0% { transform: translateY(-1rem); }
+    50% { transform: translateY(1rem); }
+    100% { transform: translateY(-1rem); }
+}
+
+.rotate-clockwise-custom-animation {
+    animation: 10s rotate-clockwise-anim linear infinite;
+}
+
+@keyframes rotate-clockwise-anim {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.rotate-counterclockwise-custom-animation {
+    animation: 10s rotate-counterclockwise-anim linear infinite;
+}
+
+@keyframes rotate-counterclockwise-anim {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(-180deg); }
+    100% { transform: rotate(-360deg); }
+}
+
+
 /*  My services section  */
 
 .my-services {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -446,41 +508,33 @@ body:has(.nav-open) {
     text-align: center;
 }
 
-select {
-    appearance: none;
-    padding: 0.5em 2em 0.5em 1em;
-    border: 1px solid var(--color-dark);
-    background-color: var(--color-light);
-    cursor: pointer;
-}
-
-select:focus, select:active, select:hover {
-    outline: none;
-    background-color: var(--color-dark);
-    color: var(--color-light);
-    border-color: var(--color-dark);
-    transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
-}
-
-.service-select:has(select:focus)::before, .service-select:has(select:active)::before, .service-select:has(select:hover)::before {
-    border-top-color: var(--color-light);
-}
-
 .service-select {
-    position: relative;
-    margin: 0 0 2em 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    margin: 1em 0 2em 0;
 }
 
-.service-select::before {
-    content: '';
-    position: absolute;
-    right: 1em;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid var(--color-dark);
+.service-select-button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-dark);
+    transition: color 250ms ease-in-out;
+}
+
+.service-select-button:hover {
+    color: var(--color-accent);
+}
+
+.service-select-title {
+    font-size: 1.8rem;
 }
 
 .services {
@@ -515,6 +569,14 @@ select:focus, select:active, select:hover {
     width: 350px;
     box-shadow: var(--bs);
     animation: fade-in-left 1s ease-in-out;
+}
+
+.service-frontend-image {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+.service-ui-image {
+    border-radius: 68% 32% 35% 65% / 58% 22% 78% 42%;
 }
 
 @keyframes fade-in-left {
@@ -564,23 +626,37 @@ select:focus, select:active, select:hover {
     }
 }
 
-.service-tech svg:hover {
-    animation: color-cycle 2s linear infinite;
+.service-tech > div {
+    transition: transform 250ms ease-in-out;
 }
 
-@keyframes color-cycle {
-    0% {
-        fill: var(--color-dark);
-    }
-    40% {
-        fill: var(--color-accent);
-    }
-    60% {
-        fill: var(--color-accent);
-    }
-    100% {
-        fill: var(--color-dark);
-    }
+.service-tech > div:hover {
+    transform: translateY(-5px);
+}
+
+.service-tech > div p {
+    transition: text-shadow 250ms ease-in-out;
+}
+
+.service-tech > div:hover p, .service-tech > div:focus p, .service-tech > div:active p {
+    text-shadow: 0.25em 0.25em 0.25em rgba(0,0,0,.25);
+}
+
+.service-tech > div svg {
+    transition: filter 250ms ease-in-out;
+}
+
+.service-tech > div:hover svg, .service-tech > div:focus svg, .service-tech > div:active svg {
+    filter: drop-shadow(0.25em 0.25em 0.25em rgba(0,0,0,.25));
+}
+
+.service-tech > div p, .service-tech > div svg {
+    transition: color 250ms ease-in-out;
+}
+
+.service-tech > div:hover p, .service-tech > div:focus p, .service-tech > div:active p,
+.service-tech > div:hover svg, .service-tech > div:focus svg, .service-tech > div:active svg {
+    color: var(--color-accent);
 }
 
 .service-tech p {
@@ -588,15 +664,21 @@ select:focus, select:active, select:hover {
     font-size: var(--fs-body);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 950px) {
     .service-description-container {
         flex-direction: column;
         gap: 2em;
     }
 
-    .service-description-container img, .service-description-container p {
+    .service-description-container p {
         animation: fade-in 1s ease-in-out;
         width: 100%;
+    }
+
+    .service-description-container img {
+        animation: fade-in 1s ease-in-out;
+        width: 100%;
+        max-width: 400px;
     }
 }
 
@@ -604,6 +686,7 @@ select:focus, select:active, select:hover {
 /*  About me section  */
 
 .about-me-container {
+    position: relative;
     background-color: var(--color-dark);
     color: var(--color-light);
 }
@@ -633,6 +716,7 @@ select:focus, select:active, select:hover {
 /* Projects */
 
 .my-work {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -657,6 +741,18 @@ select:focus, select:active, select:hover {
     box-shadow: var(--bs);
     overflow: hidden;
     position: relative;
+    opacity: 0;
+    cursor: pointer;
+    animation: fade-in 1s ease-in-out var(--item-delay) 1 forwards;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {  
+        opacity: 1; 
+    }
 }
 
 .portfolio__img {
@@ -713,12 +809,27 @@ select:focus, select:active, select:hover {
 /*  Certificates section */
 
 .certificates {
+    position: relative;
     background-color: var(--color-light);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 5em 2em 7em;
+}
+
+.certificates__carousel.carousel.slide {
+    opacity: 0;
+    animation: certificate-appear 1s ease-in-out 100ms forwards;
+}
+
+@keyframes certificate-appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 /*  Carousel CSS  */
@@ -738,7 +849,7 @@ select:focus, select:active, select:hover {
 
 .carousel-indicators {
     position: absolute;
-    bottom: -10%;
+    bottom: -3rem;
     margin: auto;
 }
 
@@ -751,7 +862,7 @@ select:focus, select:active, select:hover {
         display: none;
     }
 
-    .carousel-indicators {
+    /* .carousel-indicators {
         position: absolute;
         bottom: -25%;
     }
@@ -761,7 +872,7 @@ select:focus, select:active, select:hover {
         height: 20px;
         margin: 0 5px;
         border-radius: 50%;
-    }
+    } */
 
     .carousel img  {
         width: 100%;
@@ -992,7 +1103,7 @@ select:focus, select:active, select:hover {
 /* Error Page */
 
 .error-page {
-    margin: 1em auto;
+    margin: 5em auto;
 }
 
 .error-page section {
