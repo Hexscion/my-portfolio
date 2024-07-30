@@ -164,13 +164,27 @@ export default function Hero() {
 
         lastMoveTime = Date.now();
 
-        const xValue = event.gamma * windowWidth / 25;
-        let yValue = event.beta * windowHeight / 75;
+        let gammaCorrected = 0, betaCorrected = 0;
+
+        if (event.gamma !== null) {
+            gammaCorrected = event.gamma;
+        } else {
+            gammaCorrected = 0;
+        }
+
+        if (event.beta !== null && (event.beta <= 90 && event.beta >= 0)) {
+            betaCorrected = event.beta - 45;
+        } else {
+            betaCorrected = 0;
+        }
+
+        const xValue = gammaCorrected * windowWidth / 20;
+        let yValue = betaCorrected * windowHeight / 20;
 
         api.start((index) => {
             const element = document.querySelector(`.${images[index].className}`);
             const isLeft = parseFloat(getComputedStyle(element).left) < window.innerWidth / 2 ? -1 : 1;
-            const zValue = (event.gamma - parseFloat(getComputedStyle(element).left)) * isLeft;
+            const zValue = (gammaCorrected - (parseFloat(getComputedStyle(element).left))/windowWidth) * isLeft;
             return {
                 to: {
                     transform : `perspective(2000px) 
