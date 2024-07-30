@@ -172,8 +172,8 @@ export default function Hero() {
             gammaCorrected = 0;
         }
 
-        if (event.beta !== null && (event.beta <= 90 && event.beta >= 0)) {
-            betaCorrected = event.beta - 45;
+        if (event.beta !== null && (event.beta <= 90 && event.beta >= -30)) {
+            betaCorrected = event.beta - 30;
         } else {
             betaCorrected = 0;
         }
